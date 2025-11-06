@@ -1,0 +1,786 @@
+/* =================================================================
+   1. Global Styles & Variables
+   ================================================================= */
+:root {
+    --primary-color: #0d47a1;  /* A deep, trustworthy blue */
+    --secondary-color: #1e88e5; /* A slightly brighter blue for accents */
+    --dark-color: #212121;      /* For text */
+    --grey-color: #757575;      /* For subtitles */
+    --light-color: #ffffff;     /* White */
+    --bg-light-grey: #f9f9f9;  /* Light grey for section backgrounds */
+    --font-main: 'Montserrat', sans-serif;
+    --font-heading: 'Lora', serif;
+}
+/* Animation Class */
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.fade-in-section.is-visible {
+    opacity: 1;
+    transform: none;
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-main);
+    color: var(--dark-color);
+    line-height: 1.7;
+    background-color: var(--light-color);
+    /* This creates the subtle dot pattern background */
+    background-image: radial-gradient(circle at 1px 1px, #e0e0e0 1px, transparent 0);
+    background-size: 25px 25px;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+}
+
+h1 { font-size: 3rem; color: var(--light-color); }
+h2 { font-size: 2.5rem; color: var(--dark-color); text-align: center; }
+p { font-size: 1rem; margin-bottom: 1rem; }
+
+/* New: Sub-heading style for sections like "For Individuals & Families" */
+.section-sub-heading {
+    font-family: var(--font-main); /* Use main font for a more modern feel */
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-align: center;
+    margin-top: 4rem;
+    margin-bottom: 2.5rem;
+}
+
+
+/* =================================================================
+   2. Navbar
+   ================================================================= */
+.navbar {
+    background: var(--light-color);
+    padding: 1rem 0;
+    border-bottom: 1px solid #eee;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+.navbar nav ul {
+    display: flex;
+    list-style: none;
+    align-items: center;
+}
+
+.navbar nav ul li {
+    margin-left: 2rem;
+}
+
+.navbar nav a {
+    text-decoration: none;
+    color: var(--dark-color);
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.navbar nav a:hover {
+    color: var(--primary-color);
+}
+
+.cta-button-nav {
+    background: var(--primary-color);
+    color: var(--light-color);
+    padding: 0.5rem 1.2rem;
+    border-radius: 50px;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button-nav:hover {
+    background: var(--secondary-color);
+    color: var(--light-color);
+}
+
+
+/* =================================================================
+   3. Hero Section
+   ================================================================= */
+.hero {
+    /* Replace 'hero-background.jpg' with your professional background image */
+    background-image: linear-gradient(rgba(13, 71, 161, 0.8), rgba(13, 71, 161, 0.8)), url('images/hero-background.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 6rem 0;
+    color: var(--light-color);
+}
+
+.hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.hero-text {
+    flex: 1;
+    padding-right: 3rem;
+}
+
+.hero .subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.cta-button {
+    background: var(--light-color);
+    color: var(--primary-color);
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    display: inline-block;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.hero-image-container img {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid var(--secondary-color);
+}
+
+
+/* =================================================================
+   4. Trust Bar (Enhanced with Carousel)
+   ================================================================= */
+.trust-bar {
+    background: var(--bg-light-grey);
+    padding: 3rem 0; /* Increased padding */
+    overflow: hidden; /* Hide overflowing logos for carousel */
+    position: relative;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+.trust-bar .container {
+    display: flex;
+    flex-direction: column; /* Stack heading and logos */
+    align-items: center;
+    gap: 1.5rem;
+}
+.trust-bar .trust-heading {
+    font-weight: 700; /* Bolder text */
+    color: var(--primary-color); /* Primary color */
+    font-size: 1.5rem; /* Larger font size */
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.logo-carousel {
+    display: flex;
+    white-space: nowrap; /* Prevent wrapping */
+    animation: scrollLogos 20s linear infinite; /* Smooth continuous scroll */
+    padding: 0.5rem 0;
+}
+.logo-item {
+    display: inline-flex; /* Keep items in a row */
+    align-items: center;
+    justify-content: center;
+    padding: 0 2rem; /* Spacing between logos */
+    flex-shrink: 0; /* Prevent items from shrinking */
+}
+.logo-item img {
+    height: 50px; /* Larger logo size */
+    max-width: 150px; /* Max width for individual logos */
+    width: auto;
+    opacity: 0.7;
+    filter: grayscale(100%); /* Make them grayscale */
+    transition: opacity 0.3s ease, filter 0.3s ease;
+}
+.logo-item img:hover {
+    opacity: 1;
+    filter: grayscale(0%); /* Color on hover */
+}
+
+@keyframes scrollLogos {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); } /* Scrolls half the width to repeat */
+}
+
+/* Pause animation on hover */
+.logo-carousel:hover {
+    animation-play-state: paused;
+}
+
+
+/* =================================================================
+   5. General Section Styling
+   ================================================================= */
+.about-snippet, .services, .final-cta {
+    padding: 5rem 0;
+    text-align: center;
+}
+
+.about-snippet .container, .final-cta .container {
+    max-width: 800px;
+}
+
+.about-snippet p {
+    font-size: 1.1rem;
+    color: var(--grey-color);
+    margin-bottom: 2rem;
+}
+
+.link-styled {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    position: relative;
+    padding-bottom: 2px; /* For the underline effect */
+}
+.link-styled::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--secondary-color);
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease-out;
+}
+.link-styled:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+
+/* =================================================================
+   6. Services Section (Homepage Snippet)
+   ================================================================= */
+.services {
+    background: var(--light-color);
+}
+
+.section-title p {
+    max-width: 600px;
+    margin: 0 auto 3rem auto;
+    color: var(--grey-color);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    text-align: left;
+}
+
+.service-card {
+    background: var(--light-color);
+    padding: 2.5rem;
+    border-radius: 10px;
+    border: 1px solid #eee;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.07);
+}
+
+.service-icon {
+    margin-bottom: 1.5rem;
+}
+
+.service-icon svg {
+    width: 50px;
+    height: 50px;
+    color: var(--primary-color);
+}
+
+.service-card h3 {
+    font-size: 1.3rem;
+    font-family: var(--font-main);
+}
+
+/* =================================================================
+   7. Final CTA
+   ================================================================= */
+.final-cta {
+    background: var(--primary-color);
+    color: var(--light-color);
+}
+.final-cta h2 {
+    color: var(--light-color);
+}
+.final-cta p {
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 2rem;
+}
+.cta-button-light {
+    background: var(--light-color);
+    color: var(--primary-color);
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    display: inline-block;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.cta-button-light:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+/* =================================================================
+   8. Footer
+   ================================================================= */
+footer {
+    background: var(--dark-color);
+    color: var(--light-color);
+    text-align: center;
+    padding: 2rem 0;
+}
+footer p {
+    margin: 0;
+    color: #ccc;
+}
+
+
+/* =================================================================
+   9. Mobile Responsiveness
+   ================================================================= */
+
+
+
+/* First, styles for tablets */
+@media (max-width: 900px) {
+    .services-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .hero-text {
+        padding-right: 0;
+        margin-bottom: 3rem;
+    }
+
+    /* Trust Bar adjustment for smaller screens */
+    .logo-carousel {
+        animation: scrollLogosTablet 30s linear infinite; /* Slower scroll for fewer items */
+    }
+    @keyframes scrollLogosTablet {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+    }
+}
+
+
+/* Now, styles for mobile phones (where the hamburger menu appears) */
+@media (max-width: 768px) {
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; }
+    .section-sub-heading { font-size: 1.5rem; }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+    .trust-bar .container {
+        gap: 1rem;
+    }
+    .trust-bar .trust-heading {
+        font-size: 1.2rem;
+    }
+    .logo-item img {
+        height: 40px; /* Smaller logos on mobile */
+    }
+    .logo-carousel {
+        animation: scrollLogosMobile 35s linear infinite; /* Even slower scroll */
+    }
+    @keyframes scrollLogosMobile {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+    }
+    
+    /* Hamburger Menu Icon Styling */
+    .hamburger {
+        display: block;
+        cursor: pointer;
+    }
+
+    .hamburger .bar {
+        display: block;
+        width: 25px;
+        height: 3px;
+        margin: 5px auto;
+        -webkit-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+        background-color: var(--dark-color);
+    }
+
+    /* Navigation Menu Styling for Mobile */
+    #nav-menu {
+        position: fixed;
+        left: -100%; /* Start off-screen */
+        top: 70px; /* Position below the navbar */
+        flex-direction: column;
+        background-color: var(--light-color);
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: 0.3s;
+        z-index: 99;
+        overflow-y: auto; /* Allow scrolling for long menus */
+        padding-bottom: 50px; /* Prevent last item from being cut off */
+    }
+
+    #nav-menu.active {
+        left: 0; /* Slide into view */
+    }
+
+    #nav-menu ul {
+        flex-direction: column;
+        padding-top: 2rem;
+    }
+
+    #nav-menu li {
+        margin: 1.5rem 0;
+    }
+    
+    #nav-menu a {
+        font-size: 1.2rem;
+    }
+
+    /* Animate the hamburger icon into an "X" when active */
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    /* About page grid */
+    .about-grid {
+         grid-template-columns: 1fr;
+     }
+    .about-text {
+        order: 2; /* Text below image on mobile */
+    }
+    .about-image {
+        order: 1; /* Image above text on mobile */
+        margin-bottom: 2rem;
+    }
+    .stats-grid {
+         grid-template-columns: 1fr 1fr;
+         gap: 1rem;
+     }
+    .stat-item .stat-number {
+        font-size: 2rem;
+    }
+    .stat-item .stat-label {
+        font-size: 0.9rem;
+    }
+
+    /* Services Detailed Page */
+    .services-detailed-grid {
+        grid-template-columns: 1fr;
+    }
+    .service-detail-card {
+        padding: 1.5rem;
+    }
+
+    /* Contact Section */
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* We need to hide the hamburger on desktop screens */
+@media (min-width: 769px) {
+    .hamburger {
+        display: none;
+    }
+}
+/* =================================================================
+   10. Inner Page Styles (About, Services)
+   ================================================================= */
+.page-title {
+    background: var(--primary-color);
+    padding: 4rem 0;
+    text-align: center;
+    color: var(--light-color);
+}
+.page-title h1 {
+    font-size: 2.8rem;
+}
+.page-title p {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+}
+
+.about-content {
+    padding: 5rem 0;
+}
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    text-align: left; /* Ensure text aligns left here */
+}
+.about-text h3 {
+    font-family: var(--font-main);
+    margin-top: 2rem;
+    color: var(--primary-color);
+    text-align: left; /* Align to left */
+}
+.process-steps {
+    margin-top: 1.5rem;
+}
+.process-steps .step {
+    background: var(--bg-light-grey);
+    padding: 0.8rem 1.2rem;
+    margin-bottom: 0.75rem; /* Increased margin */
+    border-left: 4px solid var(--primary-color); /* Thicker border */
+    border-radius: 5px; /* Slightly rounded corners */
+    text-align: left;
+    transition: all 0.3s ease;
+}
+.process-steps .step:hover {
+    background-color: #e0e0e0;
+    transform: translateX(5px);
+}
+.about-image img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+.stats-bar {
+     background: var(--bg-light-grey);
+     padding: 4rem 0;
+     border-top: 1px solid #eee;
+     border-bottom: 1px solid #eee;
+}
+ .stats-grid {
+     display: grid;
+     grid-template-columns: repeat(4, 1fr);
+     text-align: center;
+     gap: 2rem;
+ }
+ .stat-item .stat-number {
+     font-size: 3rem; /* Larger numbers */
+     font-weight: 700;
+     color: var(--primary-color);
+     margin-bottom: 0.5rem;
+ }
+ .stat-item .stat-label {
+     color: var(--grey-color);
+     font-size: 1rem;
+ }
+
+ /* Styles for the detailed services grid (services.html) */
+.services-detailed {
+    padding: 5rem 0;
+}
+.services-detailed-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusted min-width for better fit */
+    gap: 1.5rem; /* Increased gap */
+}
+.service-detail-card {
+    background: #fff;
+    border: 1px solid #eee;
+    padding: 2rem; /* Increased padding */
+    border-radius: 10px; /* Rounded corners */
+    text-align: center; /* Center content */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.03); /* Subtle shadow */
+    transition: all 0.3s ease;
+}
+.service-detail-card:hover {
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    transform: translateY(-8px); /* Lift effect */
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1); /* Stronger shadow */
+}
+.service-detail-card i.service-detail-icon {
+    font-size: 3rem; /* Larger icons */
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    transition: color 0.3s ease;
+}
+.service-detail-card:hover i.service-detail-icon {
+    color: var(--light-color); /* Icon turns white on hover */
+}
+.service-detail-card h3 {
+    font-family: var(--font-main); /* Use main font */
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    transition: color 0.3s ease;
+}
+.service-detail-card:hover h3 {
+    color: var(--light-color);
+}
+.service-detail-card p {
+    font-size: 0.95rem;
+    color: var(--grey-color);
+    margin-bottom: 0;
+    transition: color 0.3s ease;
+}
+.service-detail-card:hover p {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+
+/* =================================================================
+   11. Updated Contact Section Styles
+   ================================================================= */
+.contact-section {
+    padding: 5rem 0;
+    background: var(--bg-light-grey);
+}
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+/* The entire card is now a link */
+.contact-card {
+    background: #fff;
+    text-align: center;
+    padding: 2.5rem 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    text-decoration: none; /* Removes the default underline from the link */
+    color: inherit; /* Makes text inside use the default color, not the link color */
+    display: block; /* Allows the link to behave like a container */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* This is the "fanciness" - the card will lift up and get a bigger shadow on hover */
+.contact-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+}
+
+.contact-icon {
+    margin: 0 auto 1rem auto;
+    width: 60px;
+    height: 60px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/* THIS IS THE UPDATED PART FOR THE NEW ICONS */
+.contact-icon i {
+    font-size: 30px; /* Controls the size of the Font Awesome icon */
+    color: var(--light-color);
+}
+.contact-card h3 {
+    font-family: var(--font-main);
+    margin-bottom: 0.5rem;
+}
+.contact-card p {
+    color: var(--grey-color);
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem; /* Slightly smaller text for the detail */
+}
+
+/* This styles the "Send an Email" text at the bottom of the card */
+.card-cta {
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-top: 1rem;
+}
+
+@media (max-width: 900px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =================================================================
+   12. Footer Social Links & Text
+   ================================================================= */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.social-links a {
+    text-decoration: none;
+    color: var(--light-color);
+}
+
+.social-links i {
+    font-size: 1.8rem;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-links a:hover i {
+    transform: scale(1.2);
+    color: var(--secondary-color);
+}
+
+/* Styles for the new footer text */
+footer .copyright {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    color: #ccc;
+}
+
+footer .tagline {
+    font-style: italic;
+    color: #a0a0a0;
+    margin: 0;
+}
+
+footer .tagline strong {
+    color: var(--light-color); /* Makes "financial freedom" stand out */
+}
