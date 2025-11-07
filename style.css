@@ -324,9 +324,8 @@ p { font-size: 1rem; margin-bottom: 1rem; }
     margin-bottom: 1.5rem;
 }
 
-.service-icon svg {
-    width: 50px;
-    height: 50px;
+.service-icon i {
+    font-size: 50px;
     color: var(--primary-color);
 }
 
@@ -357,7 +356,8 @@ p { font-size: 1rem; margin-bottom: 1rem; }
     text-decoration: none;
     font-weight: 700;
     display: inline-block;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+    border: 2px solid transparent;
 }
 .cta-button-light:hover {
     transform: translateY(-3px);
@@ -382,9 +382,6 @@ footer p {
 /* =================================================================
    9. Mobile Responsiveness
    ================================================================= */
-
-
-
 /* First, styles for tablets */
 @media (max-width: 900px) {
     .services-grid {
@@ -401,7 +398,7 @@ footer p {
 
     /* Trust Bar adjustment for smaller screens */
     .logo-carousel {
-        animation: scrollLogosTablet 30s linear infinite; /* Slower scroll for fewer items */
+        animation: scrollLogosTablet 30s linear infinite;
     }
     @keyframes scrollLogosTablet {
         0% { transform: translateX(0); }
@@ -426,10 +423,10 @@ footer p {
         font-size: 1.2rem;
     }
     .logo-item img {
-        height: 40px; /* Smaller logos on mobile */
+        height: 40px;
     }
     .logo-carousel {
-        animation: scrollLogosMobile 35s linear infinite; /* Even slower scroll */
+        animation: scrollLogosMobile 35s linear infinite;
     }
     @keyframes scrollLogosMobile {
         0% { transform: translateX(0); }
@@ -455,8 +452,8 @@ footer p {
     /* Navigation Menu Styling for Mobile */
     #nav-menu {
         position: fixed;
-        left: -100%; /* Start off-screen */
-        top: 70px; /* Position below the navbar */
+        left: -100%;
+        top: 70px;
         flex-direction: column;
         background-color: var(--light-color);
         width: 100%;
@@ -464,12 +461,12 @@ footer p {
         text-align: center;
         transition: 0.3s;
         z-index: 99;
-        overflow-y: auto; /* Allow scrolling for long menus */
-        padding-bottom: 50px; /* Prevent last item from being cut off */
+        overflow-y: auto;
+        padding-bottom: 50px;
     }
 
     #nav-menu.active {
-        left: 0; /* Slide into view */
+        left: 0;
     }
 
     #nav-menu ul {
@@ -498,7 +495,7 @@ footer p {
         transform: translateY(-8px) rotate(-45deg);
     }
 
-    /* About page grid */
+    /* About page grid FIX */
     .about-grid {
          grid-template-columns: 1fr;
      }
@@ -566,13 +563,13 @@ footer p {
     grid-template-columns: 1fr 1fr;
     gap: 3rem;
     align-items: center;
-    text-align: left; /* Ensure text aligns left here */
+    text-align: left;
 }
 .about-text h3 {
     font-family: var(--font-main);
     margin-top: 2rem;
     color: var(--primary-color);
-    text-align: left; /* Align to left */
+    text-align: left;
 }
 .process-steps {
     margin-top: 1.5rem;
@@ -580,9 +577,9 @@ footer p {
 .process-steps .step {
     background: var(--bg-light-grey);
     padding: 0.8rem 1.2rem;
-    margin-bottom: 0.75rem; /* Increased margin */
-    border-left: 4px solid var(--primary-color); /* Thicker border */
-    border-radius: 5px; /* Slightly rounded corners */
+    margin-bottom: 0.75rem;
+    border-left: 4px solid var(--primary-color);
+    border-radius: 5px;
     text-align: left;
     transition: all 0.3s ease;
 }
@@ -608,7 +605,7 @@ footer p {
      gap: 2rem;
  }
  .stat-item .stat-number {
-     font-size: 3rem; /* Larger numbers */
+     font-size: 3rem;
      font-weight: 700;
      color: var(--primary-color);
      margin-bottom: 0.5rem;
@@ -624,35 +621,35 @@ footer p {
 }
 .services-detailed-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusted min-width for better fit */
-    gap: 1.5rem; /* Increased gap */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
 }
 .service-detail-card {
     background: #fff;
     border: 1px solid #eee;
-    padding: 2rem; /* Increased padding */
-    border-radius: 10px; /* Rounded corners */
-    text-align: center; /* Center content */
-    box-shadow: 0 5px 15px rgba(0,0,0,0.03); /* Subtle shadow */
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.03);
     transition: all 0.3s ease;
 }
 .service-detail-card:hover {
     background-color: var(--primary-color);
     color: var(--light-color);
-    transform: translateY(-8px); /* Lift effect */
-    box-shadow: 0 15px 30px rgba(0,0,0,0.1); /* Stronger shadow */
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
 }
 .service-detail-card i.service-detail-icon {
-    font-size: 3rem; /* Larger icons */
+    font-size: 3rem;
     color: var(--primary-color);
     margin-bottom: 1rem;
     transition: color 0.3s ease;
 }
 .service-detail-card:hover i.service-detail-icon {
-    color: var(--light-color); /* Icon turns white on hover */
+    color: var(--light-color);
 }
 .service-detail-card h3 {
-    font-family: var(--font-main); /* Use main font */
+    font-family: var(--font-main);
     font-size: 1.4rem;
     font-weight: 600;
     margin-bottom: 0.8rem;
@@ -686,20 +683,18 @@ footer p {
     margin-top: 3rem;
 }
 
-/* The entire card is now a link */
 .contact-card {
     background: #fff;
     text-align: center;
     padding: 2.5rem 2rem;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    text-decoration: none; /* Removes the default underline from the link */
-    color: inherit; /* Makes text inside use the default color, not the link color */
-    display: block; /* Allows the link to behave like a container */
+    text-decoration: none;
+    color: inherit;
+    display: block;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* This is the "fanciness" - the card will lift up and get a bigger shadow on hover */
 .contact-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 12px 30px rgba(0,0,0,0.1);
@@ -715,9 +710,8 @@ footer p {
     align-items: center;
     justify-content: center;
 }
-/* THIS IS THE UPDATED PART FOR THE NEW ICONS */
 .contact-icon i {
-    font-size: 30px; /* Controls the size of the Font Awesome icon */
+    font-size: 30px;
     color: var(--light-color);
 }
 .contact-card h3 {
@@ -727,10 +721,9 @@ footer p {
 .contact-card p {
     color: var(--grey-color);
     margin-bottom: 1.5rem;
-    font-size: 0.95rem; /* Slightly smaller text for the detail */
+    font-size: 0.95rem;
 }
 
-/* This styles the "Send an Email" text at the bottom of the card */
 .card-cta {
     font-weight: 600;
     color: var(--primary-color);
@@ -768,7 +761,6 @@ footer p {
     color: var(--secondary-color);
 }
 
-/* Styles for the new footer text */
 footer .copyright {
     font-size: 0.9rem;
     margin-bottom: 0.5rem;
@@ -782,5 +774,33 @@ footer .tagline {
 }
 
 footer .tagline strong {
-    color: var(--light-color); /* Makes "financial freedom" stand out */
+    color: var(--light-color);
+}
+
+/* =================================================================
+   13. CTA Button Adjustments (NEW)
+   ================================================================= */
+.final-cta .container a + a {
+    margin-left: 1rem; /* Adds space between adjacent buttons */
+}
+.cta-button-light.cta-secondary {
+    background: transparent;
+    border: 2px solid var(--light-color);
+    color: var(--light-color);
+}
+.cta-button-light.cta-secondary:hover {
+    background: var(--light-color);
+    color: var(--primary-color);
+}
+
+@media (max-width: 768px) {
+    .final-cta .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+    .final-cta .container a + a {
+        margin-left: 0; /* Removes horizontal space on mobile */
+    }
 }

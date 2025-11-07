@@ -57,17 +57,20 @@ const statsObserverOptions = {
 const countUp = (element, target) => {
     let start = 0;
     const duration = 2000; // 2 seconds
-    const increment = target / (duration / 10); // Calculate increment based on duration
+    
+    // Ensure increment is at least 1 to avoid infinite loops for small numbers
+    const increment = Math.max(target / (duration / 16), 1);
     
     const timer = setInterval(() => {
         start += increment;
         if (start < target) {
             element.textContent = Math.ceil(start);
         } else {
-            element.textContent = target + (target ===700 || target === 10 || target === 5 ? '+' : ''); // Add '+' for 10+ and 5+
+            // UPDATED LOGIC: Only add '+' for 10 and 5
+            element.textContent = target + (target === 10 || target === 5 ? '+' : '');
             clearInterval(timer);
         }
-    }, 10); // Update every 10ms
+    }, 16); // Update every 16ms for smoother animation
 };
 
 
@@ -77,6 +80,8 @@ const statsObserver = new IntersectionObserver((entries, observer) => {
             const statNumbers = entry.target.querySelectorAll('.stat-number');
             statNumbers.forEach(stat => {
                 const target = parseInt(stat.getAttribute('data-target'));
+                // Reset text to 0 before starting to handle re-scrolling if ever needed
+                stat.textContent = '0'; 
                 countUp(stat, target);
             });
             observer.unobserve(entry.target); // Stop observing once animated
