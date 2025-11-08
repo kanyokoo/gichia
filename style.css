@@ -497,12 +497,11 @@ footer p {
         margin-bottom: 2rem; /* Adjust space below */
     }
 
-    /* The about-grid is no longer needed for complex mobile layout */
     .about-grid {
        display: block;
     }
     
-    /* These original rules are restored and necessary for other pages */
+   
     .stats-grid {
          grid-template-columns: 1fr 1fr;
          gap: 1rem;
