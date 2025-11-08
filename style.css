@@ -484,42 +484,45 @@ footer p {
     }
     
     /* ======================================================
-       NEW MOBILE STYLES for the About Page
+       FINAL, SIMPLIFIED MOBILE STYLES for the About Page
        ====================================================== */
     .about-content {
         padding-top: 2.5rem; 
     }
 
-    /* On mobile, use a single-column grid. The HTML order will now dictate the flow. */
+    /* 1. Turn off grid layout on mobile. This lets child elements stack naturally. */
     .about-grid {
-        display: grid; 
-        grid-template-columns: 1fr; /* This creates the single column stack */
-        gap: 2rem; /* This creates space between the image and the text block */
+        display: block; 
     }
 
-    /* We no longer need to re-order things, but we'll style the items */
+    /* 2. Center the image's container div. */
     .about-image {
-        display: flex;
-        justify-content: center; /* Center the image within its container */
+        display: block;
+        max-width: 340px;      /* Set a max-width for the container */
+        margin-left: auto;     /* These two lines are the key to centering */
+        margin-right: auto;    /* a block element */
+        margin-bottom: 2.5rem; /* Add space between image and text */
     }
 
+    /* 3. Make the image fill its container perfectly. */
     .about-image img {
-        width: 100%; 
-        max-width: 340px; /* A good maximum width for mobile screens */
+        width: 100%;           /* The image will be 100% of the container's width */
         height: auto;
+        display: block;        /* Removes extra bottom space on images */
         border-radius: 12px;
         border: 4px solid var(--primary-color);
         box-shadow: 0 6px 24px rgba(0,0,0,0.12);
     }
 
+    /* 4. Center the text content below the image. */
     .about-text {
-        text-align: center; /* Center-align the headings and paragraphs */
+        text-align: center;
     }
     .process-steps .step {
-        text-align: left; /* Keep the individual steps left-aligned for readability */
+        text-align: left; /* Keep steps readable */
     }
     /* ======================================================
-       END OF MOBILE FIX
+       END OF FINAL FIX
        ====================================================== */
 
     .stats-grid {
@@ -581,6 +584,7 @@ footer p {
 /* NEW RULE: Use grid-column to place items, overriding HTML source order */
 .about-grid .about-text {
     grid-column: 1; /* Place the text in the first column */
+    text-align: left; /* Ensure text aligns left on desktop */
 }
 .about-grid .about-image {
     grid-column: 2; /* Place the image in the second column */
