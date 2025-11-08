@@ -484,49 +484,42 @@ footer p {
     }
     
     /* ======================================================
-       UPDATED ABOUT PAGE FIX FOR MOBILE (incorporating your suggestions)
+       NEW MOBILE STYLES for the About Page
        ====================================================== */
     .about-content {
         padding-top: 2.5rem; 
     }
+
+    /* On mobile, use a single-column grid. The HTML order will now dictate the flow. */
     .about-grid {
-        display: flex; /* Use flexbox to easily reorder content */
-        flex-direction: column;
-        align-items: center; /* Center align items in the flex column */
+        display: grid; 
+        grid-template-columns: 1fr; /* This creates the single column stack */
+        gap: 2rem; /* This creates space between the image and the text block */
     }
+
+    /* We no longer need to re-order things, but we'll style the items */
     .about-image {
-        order: -1; /* Move the image above the text */
-        width: 100%;
         display: flex;
-        justify-content: center; /* Center the image horizontally */
-        align-items: center;
-        margin-bottom: 2rem; /* Space between image and text */
-        margin-top: 0.5rem; /* Slight top margin for better spacing */
+        justify-content: center; /* Center the image within its container */
     }
+
     .about-image img {
-        width: 85vw; /* Make image responsive, using viewport width */
-        max-width: 320px; /* Set a specific max-width for better control */
-        height: auto; /* Maintain aspect ratio */
-        border-radius: 16px; /* Slightly larger border-radius for a modern look */
-        border: 4px solid var(--primary-color); /* Your primary color border */
-        box-shadow: 0 8px 32px rgba(0,0,0,0.15); /* Softer, more spread shadow */
-        object-fit: cover; /* Ensures the image covers the area without distortion */
-        background: #fff; /* Explicitly set background color to white in case of transparency */
+        width: 100%; 
+        max-width: 340px; /* A good maximum width for mobile screens */
+        height: auto;
+        border-radius: 12px;
+        border: 4px solid var(--primary-color);
+        box-shadow: 0 6px 24px rgba(0,0,0,0.12);
     }
+
     .about-text {
-        padding: 0 0.5rem; /* Add slight horizontal padding to text content */
-        margin-top: 0; /* Reset any default top margin */
-        order: 1; /* Ensure text comes after the image (which has order -1) */
-        text-align: center; /* Center align all text within this block */
+        text-align: center; /* Center-align the headings and paragraphs */
     }
-     .about-text h2, .about-text h3 {
-        text-align: center; /* Ensure headings are also centered */
-    }
-     .process-steps .step {
-        text-align: left; /* Keep the process steps text left-aligned for readability */
+    .process-steps .step {
+        text-align: left; /* Keep the individual steps left-aligned for readability */
     }
     /* ======================================================
-       END OF UPDATED FIX
+       END OF MOBILE FIX
        ====================================================== */
 
     .stats-grid {
@@ -577,12 +570,22 @@ footer p {
 .about-content {
     padding: 5rem 0;
 }
+/* DESKTOP GRID STYLES */
 .about-grid {
-    display: grid; /* DESKTOP uses grid */
-    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns */
     gap: 3rem;
     align-items: center;
 }
+
+/* NEW RULE: Use grid-column to place items, overriding HTML source order */
+.about-grid .about-text {
+    grid-column: 1; /* Place the text in the first column */
+}
+.about-grid .about-image {
+    grid-column: 2; /* Place the image in the second column */
+}
+
 .about-text h3 {
     font-family: var(--font-main);
     margin-top: 2rem;

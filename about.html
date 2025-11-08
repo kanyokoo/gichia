@@ -39,9 +39,16 @@
         </div>
     </section>
 
-    <!-- CORRECTED SECTION: The about-image div is now INSIDE the about-grid div -->
+    <!-- SECTION WITH REORDERED HTML FOR A MOBILE-FIRST APPROACH -->
     <section class="about-content fade-in-section">
         <div class="container about-grid">
+            
+            <!-- IMAGE DIV NOW COMES FIRST IN THE HTML -->
+            <div class="about-image">
+                <img src="images/about_3.jpg" alt="Margaret Gichia in a professional setting">
+            </div>
+
+            <!-- TEXT DIV NOW COMES SECOND IN THE HTML -->
             <div class="about-text">
                 <h2>My Commitment to You</h2>
                 <p>You don’t have to figure out money alone. I’m here to help you make clear, confident, and strategic financial decisions — whether you’re planning for retirement, building wealth, or growing your business.</p>
@@ -54,19 +61,15 @@
                     <div class="step"><strong>3. Support:</strong> Walk with you as a Financial Accountability Partner.</div>
                     <div class="step"><strong>4. Grow:</strong> Refine and scale your plan as your life evolves.</div>
                 </div>
+                </div>
             </div>
-            </div>
-            <!-- THIS DIV IS NOW CORRECTLY PLACED INSIDE THE GRID -->
-            <div class="about-image">
-                <img src="images/about_3.jpg" alt="Margaret Gichia in a professional setting">
-            </div>
+            
         </div>
     </section>
 
      <section class="stats-bar fade-in-section">
          <div class="container stats-grid">
              <div class="stat-item">
-                 <!-- I see you updated this number to 700. The script will handle it! -->
                  <div class="stat-number" data-target="700">0</div>
                  <div class="stat-label">Individuals Guided</div>
              </div>
