@@ -494,18 +494,38 @@ footer p {
     .hamburger.active .bar:nth-child(3) {
         transform: translateY(-8px) rotate(-45deg);
     }
-
-    /* About page grid FIX */
+    
+    /* ======================================================
+       THIS IS THE NEW CODE BLOCK THAT FIXES THE ABOUT PAGE
+       ====================================================== */
     .about-grid {
          grid-template-columns: 1fr;
-     }
-    .about-text {
-        order: 2; /* Text below image on mobile */
     }
     .about-image {
-        order: 1; /* Image above text on mobile */
-        margin-bottom: 2rem;
+        order: 1; /* Image appears first */
+        display: flex; /* Use flexbox to center the image */
+        justify-content: center; /* Center horizontally */
+        margin-bottom: 2.5rem; /* More space below image */
     }
+    .about-image img {
+        width: 250px; /* Give a fixed, prominent size */
+        height: 250px;
+        border-radius: 50%; /* Make it circular */
+        object-fit: cover; /* Ensure image covers the circle nicely */
+        border: 5px solid var(--primary-color); /* Add a border like the hero */
+        box-shadow: 0 5px 20px rgba(0,0,0,0.1); /* Add a subtle shadow */
+    }
+    .about-text {
+        order: 2; /* Text appears second */
+        text-align: center; /* Center all text content */
+    }
+     .about-text h3 {
+        text-align: center; /* Specifically center the 'My Approach' heading */
+    }
+    /* ======================================================
+       END OF NEW FIX
+       ====================================================== */
+
     .stats-grid {
          grid-template-columns: 1fr 1fr;
          gap: 1rem;
@@ -560,16 +580,15 @@ footer p {
 }
 .about-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr; /* This is for desktop */
     gap: 3rem;
     align-items: center;
-    text-align: left;
 }
 .about-text h3 {
     font-family: var(--font-main);
     margin-top: 2rem;
     color: var(--primary-color);
-    text-align: left;
+    text-align: left; /* Keep left-aligned for desktop */
 }
 .process-steps {
     margin-top: 1.5rem;
@@ -588,8 +607,8 @@ footer p {
     transform: translateX(5px);
 }
 .about-image img {
-    width: 100%;
-    border-radius: 10px;
+    width: 100%; /* For desktop, it fills its container */
+    border-radius: 10px; /* Square with rounded corners on desktop */
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 .stats-bar {
@@ -778,7 +797,7 @@ footer .tagline strong {
 }
 
 /* =================================================================
-   13. CTA Button Adjustments (NEW)
+   13. CTA Button Adjustments
    ================================================================= */
 .final-cta .container a + a {
     margin-left: 1rem; /* Adds space between adjacent buttons */
