@@ -484,50 +484,46 @@ footer p {
     }
     
     /* ======================================================
-       UPDATED ABOUT PAGE FIX FOR MOBILE
+       UPDATED ABOUT PAGE FIX FOR MOBILE (incorporating your suggestions)
        ====================================================== */
     .about-content {
-        /* On mobile, reduce padding at the top so it's closer to the title */
-        padding-top: 2.5rem;
+        padding-top: 2.5rem; 
     }
-
     .about-grid {
-        /* Use flexbox to easily reorder content */
-        display: flex;
+        display: flex; /* Use flexbox to easily reorder content */
         flex-direction: column;
+        align-items: center; /* Center align items in the flex column */
     }
-
     .about-image {
-        /* Move the image to the top of the flex container */
-        order: 1;
+        order: -1; /* Move the image above the text */
+        width: 100%;
         display: flex;
         justify-content: center; /* Center the image horizontally */
-        margin-bottom: 2.5rem; /* Add space between the image and the text below */
+        align-items: center;
+        margin-bottom: 2rem; /* Space between image and text */
+        margin-top: 0.5rem; /* Slight top margin for better spacing */
     }
-
     .about-image img {
-        /* Control the image size for a clean look */
-        width: 100%; /* Make the image responsive */
-        max-width: 320px; /* Set a maximum width so it doesn't get too large */
+        width: 85vw; /* Make image responsive, using viewport width */
+        max-width: 320px; /* Set a specific max-width for better control */
         height: auto; /* Maintain aspect ratio */
-        border-radius: 10px; /* Keep the rounded corners */
-        border: 4px solid var(--primary-color);
-        box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        border-radius: 16px; /* Slightly larger border-radius for a modern look */
+        border: 4px solid var(--primary-color); /* Your primary color border */
+        box-shadow: 0 8px 32px rgba(0,0,0,0.15); /* Softer, more spread shadow */
+        object-fit: cover; /* Ensures the image covers the area without distortion */
+        background: #fff; /* Explicitly set background color to white in case of transparency */
     }
-
     .about-text {
-        /* Move the text block below the image */
-        order: 2;
-        text-align: center; /* Center-align the text for a clean mobile view */
+        padding: 0 0.5rem; /* Add slight horizontal padding to text content */
+        margin-top: 0; /* Reset any default top margin */
+        order: 1; /* Ensure text comes after the image (which has order -1) */
+        text-align: center; /* Center align all text within this block */
     }
-
-    .about-text h2, .about-text h3 {
+     .about-text h2, .about-text h3 {
         text-align: center; /* Ensure headings are also centered */
     }
-
-    .process-steps .step {
-        /* For readability, keep the step text left-aligned */
-        text-align: left;
+     .process-steps .step {
+        text-align: left; /* Keep the process steps text left-aligned for readability */
     }
     /* ======================================================
        END OF UPDATED FIX
