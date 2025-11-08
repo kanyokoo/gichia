@@ -130,7 +130,6 @@ p { font-size: 1rem; margin-bottom: 1rem; }
    3. Hero Section
    ================================================================= */
 .hero {
-    /* Replace 'hero-background.jpg' with your professional background image */
     background-image: linear-gradient(rgba(13, 71, 161, 0.8), rgba(13, 71, 161, 0.8)), url('images/hero-background.jpg');
     background-size: cover;
     background-position: center;
@@ -186,58 +185,57 @@ p { font-size: 1rem; margin-bottom: 1rem; }
    ================================================================= */
 .trust-bar {
     background: var(--bg-light-grey);
-    padding: 3rem 0; /* Increased padding */
-    overflow: hidden; /* Hide overflowing logos for carousel */
+    padding: 3rem 0;
+    overflow: hidden;
     position: relative;
     border-top: 1px solid #eee;
     border-bottom: 1px solid #eee;
 }
 .trust-bar .container {
     display: flex;
-    flex-direction: column; /* Stack heading and logos */
+    flex-direction: column;
     align-items: center;
     gap: 1.5rem;
 }
 .trust-bar .trust-heading {
-    font-weight: 700; /* Bolder text */
-    color: var(--primary-color); /* Primary color */
-    font-size: 1.5rem; /* Larger font size */
+    font-weight: 700;
+    color: var(--primary-color);
+    font-size: 1.5rem;
     margin-bottom: 1rem;
     text-align: center;
 }
 
 .logo-carousel {
     display: flex;
-    white-space: nowrap; /* Prevent wrapping */
-    animation: scrollLogos 20s linear infinite; /* Smooth continuous scroll */
+    white-space: nowrap;
+    animation: scrollLogos 20s linear infinite;
     padding: 0.5rem 0;
 }
 .logo-item {
-    display: inline-flex; /* Keep items in a row */
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 0 2rem; /* Spacing between logos */
-    flex-shrink: 0; /* Prevent items from shrinking */
+    padding: 0 2rem;
+    flex-shrink: 0;
 }
 .logo-item img {
-    height: 50px; /* Larger logo size */
-    max-width: 150px; /* Max width for individual logos */
+    height: 50px;
+    max-width: 150px;
     width: auto;
     opacity: 0.7;
-    filter: grayscale(100%); /* Make them grayscale */
+    filter: grayscale(100%);
     transition: opacity 0.3s ease, filter 0.3s ease;
 }
 .logo-item img:hover {
     opacity: 1;
-    filter: grayscale(0%); /* Color on hover */
+    filter: grayscale(0%);
 }
 
 @keyframes scrollLogos {
     0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); } /* Scrolls half the width to repeat */
+    100% { transform: translateX(-50%); }
 }
 
-/* Pause animation on hover */
 .logo-carousel:hover {
     animation-play-state: paused;
 }
@@ -267,7 +265,7 @@ p { font-size: 1rem; margin-bottom: 1rem; }
     font-weight: 700;
     font-size: 1.1rem;
     position: relative;
-    padding-bottom: 2px; /* For the underline effect */
+    padding-bottom: 2px;
 }
 .link-styled::after {
     content: '';
@@ -395,8 +393,6 @@ footer p {
         padding-right: 0;
         margin-bottom: 3rem;
     }
-
-    /* Trust Bar adjustment for smaller screens */
     .logo-carousel {
         animation: scrollLogosTablet 30s linear infinite;
     }
@@ -407,7 +403,7 @@ footer p {
 }
 
 
-/* Now, styles for mobile phones (where the hamburger menu appears) */
+/* Now, styles for mobile phones */
 @media (max-width: 768px) {
     h1 { font-size: 2.5rem; }
     h2 { font-size: 2rem; }
@@ -438,13 +434,11 @@ footer p {
         display: block;
         cursor: pointer;
     }
-
     .hamburger .bar {
         display: block;
         width: 25px;
         height: 3px;
         margin: 5px auto;
-        -webkit-transition: all 0.3s ease-in-out;
         transition: all 0.3s ease-in-out;
         background-color: var(--dark-color);
     }
@@ -464,66 +458,70 @@ footer p {
         overflow-y: auto;
         padding-bottom: 50px;
     }
-
     #nav-menu.active {
         left: 0;
     }
-
     #nav-menu ul {
         flex-direction: column;
         padding-top: 2rem;
     }
-
     #nav-menu li {
         margin: 1.5rem 0;
     }
-    
     #nav-menu a {
         font-size: 1.2rem;
     }
 
-    /* Animate the hamburger icon into an "X" when active */
+    /* Animate hamburger icon into an "X" when active */
     .hamburger.active .bar:nth-child(2) {
         opacity: 0;
     }
-
     .hamburger.active .bar:nth-child(1) {
         transform: translateY(8px) rotate(45deg);
     }
-
     .hamburger.active .bar:nth-child(3) {
         transform: translateY(-8px) rotate(-45deg);
     }
     
     /* ======================================================
-       THIS IS THE NEW CODE BLOCK THAT FIXES THE ABOUT PAGE
+       UPDATED ABOUT PAGE FIX FOR MOBILE
        ====================================================== */
+    .about-content {
+        /* On mobile, remove padding from the top so it sits closer to the title */
+        padding-top: 2.5rem; 
+    }
     .about-grid {
-         grid-template-columns: 1fr;
+        /* Change the grid to a flex container that wraps */
+        display: flex;
+        flex-direction: column;
     }
     .about-image {
-        order: 1; /* Image appears first */
-        display: flex; /* Use flexbox to center the image */
-        justify-content: center; /* Center horizontally */
-        margin-bottom: 2.5rem; /* More space below image */
+        order: 1; /* THE IMAGE CONTAINER COMES FIRST */
+        display: flex;
+        justify-content: center;
+        margin-bottom: 2.5rem; /* Space between image and text */
     }
     .about-image img {
-        width: 250px; /* Give a fixed, prominent size */
-        height: 250px;
-        border-radius: 50%; /* Make it circular */
-        object-fit: cover; /* Ensure image covers the circle nicely */
-        border: 5px solid var(--primary-color); /* Add a border like the hero */
-        box-shadow: 0 5px 20px rgba(0,0,0,0.1); /* Add a subtle shadow */
+        /* We are back to a more elegant rectangle, but smaller */
+        width: 100%; /* Make image responsive */
+        max-width: 300px; /* But not too large */
+        height: auto;
+        border-radius: 10px; /* Keep the nice rounded corners */
+        border: 4px solid var(--primary-color);
+        box-shadow: 0 5px 20px rgba(0,0,0,0.1);
     }
     .about-text {
-        order: 2; /* Text appears second */
-        text-align: center; /* Center all text content */
+        order: 2; /* THE TEXT CONTAINER COMES SECOND */
+        text-align: center; /* Center all the text underneath the image */
     }
-     .about-text h3 {
-        text-align: center; /* Specifically center the 'My Approach' heading */
+     .about-text h3, .about-text h2 {
+        text-align: center; /* Ensure headings are also centered */
+    }
+     .process-steps .step {
+        text-align: left; /* Keep the process steps text left-aligned for readability */
     }
     /* ======================================================
-       END OF NEW FIX
+       END OF UPDATED FIX
        ====================================================== */
 
     .stats-grid {
@@ -536,29 +534,25 @@ footer p {
     .stat-item .stat-label {
         font-size: 0.9rem;
     }
-
-    /* Services Detailed Page */
     .services-detailed-grid {
         grid-template-columns: 1fr;
     }
     .service-detail-card {
         padding: 1.5rem;
     }
-
-    /* Contact Section */
     .contact-grid {
         grid-template-columns: 1fr;
     }
 }
 
-/* We need to hide the hamburger on desktop screens */
+/* Hide hamburger on desktop */
 @media (min-width: 769px) {
     .hamburger {
         display: none;
     }
 }
 /* =================================================================
-   10. Inner Page Styles (About, Services)
+   10. Inner Page Styles (Desktop)
    ================================================================= */
 .page-title {
     background: var(--primary-color);
@@ -579,8 +573,8 @@ footer p {
     padding: 5rem 0;
 }
 .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* This is for desktop */
+    display: grid; /* DESKTOP uses grid */
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
     gap: 3rem;
     align-items: center;
 }
@@ -588,7 +582,7 @@ footer p {
     font-family: var(--font-main);
     margin-top: 2rem;
     color: var(--primary-color);
-    text-align: left; /* Keep left-aligned for desktop */
+    text-align: left;
 }
 .process-steps {
     margin-top: 1.5rem;
@@ -607,8 +601,8 @@ footer p {
     transform: translateX(5px);
 }
 .about-image img {
-    width: 100%; /* For desktop, it fills its container */
-    border-radius: 10px; /* Square with rounded corners on desktop */
+    width: 100%;
+    border-radius: 10px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 .stats-bar {
@@ -633,8 +627,6 @@ footer p {
      color: var(--grey-color);
      font-size: 1rem;
  }
-
- /* Styles for the detailed services grid (services.html) */
 .services-detailed {
     padding: 5rem 0;
 }
@@ -800,7 +792,7 @@ footer .tagline strong {
    13. CTA Button Adjustments
    ================================================================= */
 .final-cta .container a + a {
-    margin-left: 1rem; /* Adds space between adjacent buttons */
+    margin-left: 1rem;
 }
 .cta-button-light.cta-secondary {
     background: transparent;
@@ -820,6 +812,6 @@ footer .tagline strong {
         gap: 1rem;
     }
     .final-cta .container a + a {
-        margin-left: 0; /* Removes horizontal space on mobile */
+        margin-left: 0;
     }
 }
