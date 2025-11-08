@@ -487,38 +487,47 @@ footer p {
        UPDATED ABOUT PAGE FIX FOR MOBILE
        ====================================================== */
     .about-content {
-        /* On mobile, remove padding from the top so it sits closer to the title */
-        padding-top: 2.5rem; 
+        /* On mobile, reduce padding at the top so it's closer to the title */
+        padding-top: 2.5rem;
     }
+
     .about-grid {
-        /* Change the grid to a flex container that wraps */
+        /* Use flexbox to easily reorder content */
         display: flex;
         flex-direction: column;
     }
+
     .about-image {
-        order: 1; /* THE IMAGE CONTAINER COMES FIRST */
+        /* Move the image to the top of the flex container */
+        order: 1;
         display: flex;
-        justify-content: center;
-        margin-bottom: 2.5rem; /* Space between image and text */
+        justify-content: center; /* Center the image horizontally */
+        margin-bottom: 2.5rem; /* Add space between the image and the text below */
     }
+
     .about-image img {
-        /* We are back to a more elegant rectangle, but smaller */
-        width: 100%; /* Make image responsive */
-        max-width: 300px; /* But not too large */
-        height: auto;
-        border-radius: 10px; /* Keep the nice rounded corners */
+        /* Control the image size for a clean look */
+        width: 100%; /* Make the image responsive */
+        max-width: 320px; /* Set a maximum width so it doesn't get too large */
+        height: auto; /* Maintain aspect ratio */
+        border-radius: 10px; /* Keep the rounded corners */
         border: 4px solid var(--primary-color);
         box-shadow: 0 5px 20px rgba(0,0,0,0.1);
     }
+
     .about-text {
-        order: 2; /* THE TEXT CONTAINER COMES SECOND */
-        text-align: center; /* Center all the text underneath the image */
+        /* Move the text block below the image */
+        order: 2;
+        text-align: center; /* Center-align the text for a clean mobile view */
     }
-     .about-text h3, .about-text h2 {
+
+    .about-text h2, .about-text h3 {
         text-align: center; /* Ensure headings are also centered */
     }
-     .process-steps .step {
-        text-align: left; /* Keep the process steps text left-aligned for readability */
+
+    .process-steps .step {
+        /* For readability, keep the step text left-aligned */
+        text-align: left;
     }
     /* ======================================================
        END OF UPDATED FIX
