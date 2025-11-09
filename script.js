@@ -55,23 +55,28 @@ const statsObserverOptions = {
 };
 
 const countUp = (element, target) => {
-    let start = 0;
+    let startTime = null;
     const duration = 2000; // 2 seconds
-    
-    // Ensure increment is at least 1 to avoid infinite loops for small numbers
-    const increment = Math.max(target / (duration / 16), 1);
-    
-    const timer = setInterval(() => {
-        start += increment;
-        if (start < target) {
-            element.textContent = Math.ceil(start);
+
+    const animate = (currentTime) => {
+        if (!startTime) startTime = currentTime;
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const current = Math.floor(progress * target);
+
+        element.textContent = current;
+
+        if (progress < 1) {
+            requestAnimationFrame(animate);
         } else {
-            // UPDATED LOGIC: Only add '+' for 10 and 5
-            element.textContent = target + (target === 10 || target === 5 ? '+' : '');
-            clearInterval(timer);
+            // Add '+' for specific targets
+            element.textContent = target + (target === 10 || target === 700 || target === 5 ? '+' : '');
         }
-    }, 16); // Update every 16ms for smoother animation
+    };
+
+    requestAnimationFrame(animate);
 };
+
 
 
 const statsObserver = new IntersectionObserver((entries, observer) => {
