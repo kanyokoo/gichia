@@ -810,3 +810,47 @@ footer .tagline strong {
         margin-left: 0;
     }
 }
+
+/* =================================================================
+   14. Interactive Expanding Service Card
+   ================================================================= */
+
+/* Make sure the card itself has a smooth transition */
+.service-detail-card {
+    transition: all 0.4s ease-in-out; /* This ensures height and shadow changes are smooth */
+}
+
+/* This is the container for our hidden link */
+.card-cta-reveal {
+    max-height: 100;      /* It has no height by default */
+    opacity: 0;         /* It's completely invisible */
+    overflow: hidden;   /* Content is clipped */
+    transition: max-height 0.4s ease-in-out, opacity 0.4s ease, margin-top 0.4s ease;
+}
+
+/* This is what happens when you hover over the PARENT card */
+.service-detail-card:hover .card-cta-reveal {
+    max-height: 100px;  /* Give it enough height to show the content */
+    opacity: 1;         /* Make it visible */
+    margin-top: 1rem;   /* Add some nice spacing from the text above */
+}
+
+/* Styling for the actual link text */
+.card-cta-reveal .whatsapp-link {
+    display: inline-block;
+    font-weight: 600;
+    color: rgba(7, 6, 6, 0.8);
+    text-decoration: none;
+    font-size: 0.95rem;
+    padding: 0.5rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.card-cta-reveal .whatsapp-link:hover {
+    color: rgba(7, 6, 6, 0.8);
+}
+
+.card-cta-reveal .whatsapp-link b {
+    text-decoration: underline;
+}

@@ -98,3 +98,30 @@ const statsBar = document.querySelector('.stats-bar');
 if (statsBar) {
     statsObserver.observe(statsBar);
 }
+
+
+// =================================================================
+//    WhatsApp Redirect for Service Cards
+// =================================================================
+document.addEventListener('DOMContentLoaded', function() {
+    const whatsAppLinks = document.querySelectorAll('.whatsapp-link');
+    const phoneNumber = '254702195761'; // Your WhatsApp number in international format
+
+    whatsAppLinks.forEach(link => {
+        link.addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent the link from navigating to "#"
+
+            const serviceName = this.getAttribute('data-service');
+            const message = `Hey there 👋👋👋, I was wishing to know more of the ${serviceName} service I learned about from your website. Would you please enlighten me on that?`;
+
+            // This encodes the message so it can be used in a URL
+            const encodedMessage = encodeURIComponent(message);
+
+            // This is the standard format for WhatsApp click-to-chat links
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+            // Opens the WhatsApp link in a new tab
+            window.open(whatsappUrl, '_blank');
+        });
+    });
+});
