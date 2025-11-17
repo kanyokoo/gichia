@@ -7,6 +7,7 @@
     --dark-color: #212121;      /* For text */
     --grey-color: #757575;      /* For subtitles */
     --light-color: #ffffff;     /* White */
+    --services-color: #6162cf; 
     --bg-light-grey: #f9f9f9;  /* Light grey for section backgrounds */
     --font-main: 'Montserrat', sans-serif;
     --font-heading: 'Lora', serif;
@@ -640,7 +641,7 @@ footer p {
     transition: all 0.3s ease;
 }
 .service-detail-card:hover {
-    background-color: var(--primary-color);
+    background-color: var(--services-color);
     color: var(--light-color);
     transform: translateY(-8px);
     box-shadow: 0 15px 30px rgba(0,0,0,0.1);
@@ -823,7 +824,7 @@ footer .tagline strong {
 /* This is the container for our hidden link */
 .card-cta-reveal {
     max-height: 100;      /* It has no height by default */
-    opacity: 0;         /* It's completely invisible */
+    opacity: 1;         /* It's completely invisible */
     overflow: hidden;   /* Content is clipped */
     transition: max-height 0.4s ease-in-out, opacity 0.4s ease, margin-top 0.4s ease;
 }
@@ -838,7 +839,7 @@ footer .tagline strong {
 /* Styling for the actual link text */
 .card-cta-reveal .whatsapp-link {
     display: inline-block;
-    font-weight: 900;
+    font-weight: 1200;
     color: rgba(7, 6, 6, 0.8);
     text-decoration: none;
     font-size: 1.10rem;
